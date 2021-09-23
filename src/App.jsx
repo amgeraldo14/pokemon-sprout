@@ -1,10 +1,18 @@
 import { CssBaseline } from '@material-ui/core'
+import Navbar from '../src/components/Navbar/Navbar'
+
+import Home from './pages/Home/Home'
+import useStyles from './styles'
+
 const App = () => {
+  const classes = useStyles()
+
   return (
-    <div>
+    <>
       <CssBaseline/>
-      <h1>App</h1>
-    </div>
+      <Navbar/>
+      <Home/>
+    </>
   )
 }
 
