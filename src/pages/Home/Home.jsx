@@ -1,4 +1,4 @@
-import { CssBaseline, Grow, Grid, Container, Paper, Card, CardContent, CardMedia, Typography, Button, CircularProgress} from '@material-ui/core'
+import { Grid, Container, Button, CircularProgress} from '@material-ui/core'
 import Pokemon from '../../components/Pokemon/Pokemon'
 import { useState, useEffect } from 'react'
 import { APIgetPokemonsData } from '../../api'

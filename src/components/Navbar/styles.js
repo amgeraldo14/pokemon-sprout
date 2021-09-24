@@ -7,7 +7,9 @@ export default makeStyles((theme) => ({
   },
   image: {
     height: '5em',
-    width: '10%',
+    margin: 'auto'
+  },
+  link: {
     margin: 'auto'
   }
 }))

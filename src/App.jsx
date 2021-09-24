@@ -7,10 +7,8 @@ import { CssBaseline } from '@material-ui/core'
 import Navbar from '../src/components/Navbar/Navbar'
 import Home from './pages/Home/Home'
 import PokemonDetail from './pages/PokemonDetail/PokemonDetail'
-import useStyles from './styles'
 
 const App = () => {
-  const classes = useStyles()
 
   return (
     <Router>
@@ -21,7 +19,7 @@ const App = () => {
         <Route exact path="/">
           <Home/>
         </Route>
-        <Route exact path="/pokemon/">
+        <Route path="/pokemon">
           <PokemonDetail/>
         </Route>
       </Switch>

@@ -1,13 +1,12 @@
-import { CssBaseline, Grow, Grid, Container, Paper, Card, CardContent, CardMedia, Typography, Button, CircularProgress, Chip, Box} from '@material-ui/core'
+import { Grid, Card, CardContent, CardMedia, Typography, Chip, Box} from '@material-ui/core'
 import { Skeleton } from '@mui/material';
 import { useState, useEffect } from 'react'
 import { APIgetPokemonDetail } from '../../api'
-import { useRouteMatch, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import useStyles from './styles.js'
 const Pokemon = ({url}) => {
   const classes = useStyles()
   const [pokemon, setPokemon] = useState({})
-  console.log(pokemon)
   const history = useHistory()
   
   useEffect(() => {
@@ -19,7 +18,7 @@ const Pokemon = ({url}) => {
   return (
     <>
     { Object.keys(pokemon).length !== 0 ? 
-      <Grid item xs={12} md={6} lg={4} onClick={() => history.push({pathname: '/pokemon', state: pokemon})} style={{cursor: 'pointer'}}>
+      <Grid item xs={12} md={6} lg={4} onClick={() => history.push({pathname: '/pokemon/about', state: pokemon})} style={{cursor: 'pointer'}}>
         <Card elevation={3} className={classes.card}>
           <CardMedia style={{ height: 350 }} image={pokemon.sprites.other["official-artwork"].front_default} title={pokemon.name}></CardMedia>
           <CardContent className={classes.cardContent}>
