@@ -56,8 +56,8 @@ const Home = () => {
           </Grid>
         </Container>
         <Container className={classes.buttonContainer}>
-          <Button variant="contained" color="primary" onClick={previousPage} disabled={!previous ? true : false}>Previous</Button>
-          <Button variant="contained" color="primary" onClick={nextPage} disabled={!next ? true : false}>Next</Button>
+          <Button variant="contained" onClick={previousPage} disabled={!previous ? true : false}>Previous</Button>
+          <Button variant="contained" onClick={nextPage} disabled={!next ? true : false}>Next</Button>
         </Container>
       </>
       }

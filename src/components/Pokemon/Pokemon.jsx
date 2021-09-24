@@ -1,28 +1,38 @@
-import { CssBaseline, Grow, Grid, Container, Paper, Card, CardContent, CardMedia, Typography, Button, CircularProgress, Chip} from '@material-ui/core'
+import { CssBaseline, Grow, Grid, Container, Paper, Card, CardContent, CardMedia, Typography, Button, CircularProgress, Chip, Box} from '@material-ui/core'
 import { Skeleton } from '@mui/material';
 import { useState, useEffect } from 'react'
 import { APIgetPokemonDetail } from '../../api'
+import { useRouteMatch, useHistory } from 'react-router-dom'
+import useStyles from './styles.js'
 const Pokemon = ({url}) => {
+  const classes = useStyles()
   const [pokemon, setPokemon] = useState({})
   console.log(pokemon)
+  const history = useHistory()
+  
   useEffect(() => {
     (async() => setPokemon(await APIgetPokemonDetail(url)))()
-  }, [])
+  }, [url])
 
-  const capitalize = (string) => {
-    return string.charAt(0).toUpperCase() + string.slice(1)
-  }
+  const capitalize = (string) => string.charAt(0).toUpperCase() + string.slice(1)
+  
   return (
     <>
     { Object.keys(pokemon).length !== 0 ? 
-      <Grid item xs={12} md={6} lg={4} onClick={() => console.log('click')} style={{cursor: 'pointer'}}>
-        <Card elevation={3}>
-          <Typography variant="h5" gutterBottom>{capitalize(pokemon.name)}</Typography>
-          {pokemon.types.map(({type}) => {
-            return (
-              <Chip key={type.name} label={capitalize(type.name)} size="small"/>
-            )
-          })}
+      <Grid item xs={12} md={6} lg={4} onClick={() => history.push({pathname: '/pokemon', state: pokemon})} style={{cursor: 'pointer'}}>
+        <Card elevation={3} className={classes.card}>
+          <CardMedia style={{ height: 350 }} image={pokemon.sprites.other["official-artwork"].front_default} title={pokemon.name}></CardMedia>
+          <CardContent className={classes.cardContent}>
+            <Typography variant="h3" className={classes.pokemonName} gutterBottom>{capitalize(pokemon.name)}</Typography>
+            <Box>
+              {pokemon.types.map(({type}) => {
+                return (
+                  <Chip key={type.name} label={capitalize(type.name)} className={classes.chip}/>
+                  )
+                })}
+            </Box>
+
+          </CardContent>
         </Card>
       </Grid>
       :

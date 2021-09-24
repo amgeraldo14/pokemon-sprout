@@ -5,7 +5,8 @@ export default makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-    marginTop: theme.spacing(5)
+    marginTop: theme.spacing(5),
+    marginBottom: theme.spacing(5),
   },
   loadingContainer: {
     display: 'flex',
